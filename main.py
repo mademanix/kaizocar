@@ -18,5 +18,3 @@ if __name__ == '__main__':
     wheel_control.turn_forward_right()
     wheel_control.turn_back_left()
     wheel_control.turn_back_right()
-
-
