@@ -1,6 +1,8 @@
 from rpi_gpio_lib import GPIO
+from utils.const import MotorDCPWMPowerAccuracy
 
 
+# TODO control motors with PWM, rewrite forward and back method to use PWM channel
 class L298NMotorCircuit:
     # motor A
     L298N_in1: int
@@ -58,8 +60,7 @@ class L298NMotorCircuit:
         stop movement for motor A
         :return:
         """
-        GPIO.output(self.L298N_in1, GPIO.LOW)
-        GPIO.output(self.L298N_in2, GPIO.LOW)
+        self.set_power_pwm_motor_a(MotorDCPWMPowerAccuracy.NO_POWER)
 
     def run_forward_motor_b(self):
         """
@@ -82,8 +83,7 @@ class L298NMotorCircuit:
         stop movement for motor B
         :return:
         """
-        GPIO.output(self.L298N_in3, GPIO.LOW)
-        GPIO.output(self.L298N_in4, GPIO.LOW)
+        self.set_power_pwm_motor_b(MotorDCPWMPowerAccuracy.NO_POWER)
 
     def set_power_pwm_motor_a(self, dutycycle):
         self.L298N_ena_PWM.ChangeDutyCycle(dutycycle)
